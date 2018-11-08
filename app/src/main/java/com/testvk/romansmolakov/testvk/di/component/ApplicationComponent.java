@@ -6,6 +6,8 @@ import com.testvk.romansmolakov.testvk.di.module.RestModule;
 import com.testvk.romansmolakov.testvk.ui.activity.BaseActivity;
 import com.testvk.romansmolakov.testvk.ui.activity.MainActivity;
 import com.testvk.romansmolakov.testvk.ui.fragment.NewsFeedFragment;
+import com.testvk.romansmolakov.testvk.ui.holder.NewsItemBodyHolder;
+import com.testvk.romansmolakov.testvk.ui.holder.NewsItemFooterHolder;
 
 import javax.inject.Singleton;
 
@@ -19,5 +21,7 @@ public interface ApplicationComponent {
     void inject(BaseActivity activity);
     void inject(MainActivity activity);
     void inject(NewsFeedFragment fragment);
+    void inject(NewsItemBodyHolder holder);
+    void inject(NewsItemFooterHolder holder);
 
 }
