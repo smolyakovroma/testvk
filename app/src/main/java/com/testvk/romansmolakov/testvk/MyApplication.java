@@ -7,6 +7,9 @@ import com.testvk.romansmolakov.testvk.di.component.DaggerApplicationComponent;
 import com.testvk.romansmolakov.testvk.di.module.ApplicationModule;
 import com.vk.sdk.VKSdk;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class MyApplication extends Application {
 
     private static ApplicationComponent sApplicationComponent;
@@ -16,6 +19,14 @@ public class MyApplication extends Application {
         super.onCreate();
         initComponent();
         VKSdk.initialize(this);
+
+        Realm.init(this);
+
+        RealmConfiguration realmConfiguration = new RealmConfiguration
+                .Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
     }
 
     private void initComponent() {

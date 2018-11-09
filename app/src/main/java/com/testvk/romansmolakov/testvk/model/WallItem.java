@@ -7,7 +7,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.testvk.romansmolakov.testvk.model.attachments.ApiAttachment;
 
-public class WallItem {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class WallItem extends RealmObject {
 
 
     public String senderName;
@@ -23,11 +27,11 @@ public class WallItem {
         this.attachmentsString = attachmentsString;
     }
 
-    public List<WallItem> getCopyHistory() {
+    public RealmList<WallItem> getCopyHistory() {
         return copyHistory;
     }
 
-    public void setCopyHistory(List<WallItem> copyHistory) {
+    public void setCopyHistory(RealmList<WallItem> copyHistory) {
         this.copyHistory = copyHistory;
     }
 
@@ -47,6 +51,7 @@ public class WallItem {
         this.senderPhoto = senderPhoto;
     }
 
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -73,10 +78,10 @@ public class WallItem {
     private Integer canPin;
     @SerializedName("attachments")
     @Expose
-    private List<ApiAttachment> attachments = new ArrayList<>();
+    private RealmList<ApiAttachment> attachments = new RealmList<>();
     @SerializedName("copy_history")
     @Expose
-    private List<WallItem> copyHistory = new ArrayList<>();
+    private RealmList<WallItem> copyHistory = new RealmList<>();
     @SerializedName("post_source")
     @Expose
     private PostSource postSource;
@@ -157,11 +162,11 @@ public class WallItem {
         this.canPin = canPin;
     }
 
-    public List<ApiAttachment> getAttachments() {
+    public RealmList<ApiAttachment> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(List<ApiAttachment> attachments) {
+    public void setAttachments(RealmList<ApiAttachment> attachments) {
         this.attachments = attachments;
     }
 
